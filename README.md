@@ -45,8 +45,6 @@ docker run -p 8501:8501 pdf_chat
 
 > That's it! You can now use the PDF-Chat chatbot to have conversations related to PDF documents.
 
-> Please note that you will need to replace `<repository_url>` with the actual URL of this/forked repo
-
 I hope this helps! Raise issues to clarify your doubts and notify bugs.
 
 ## How to Contribute
