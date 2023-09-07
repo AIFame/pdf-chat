@@ -7,14 +7,14 @@ setup:
 	pre-commit autoupdate
 
 install:
-	@ pip install --upgrade pip
-	@ pip install -r requirements.txt
+	@pip install --upgrade pip
+	@pip install -r requirements.txt
 
 run:
-	@python -m streamlit run app.py
+	@venv/bin/python -m streamlit run app.py
 
 install-tests:
-	@ python -m pip install -r requirements-test.txt
+	@python -m pip install -r requirements-test.txt
 
 test:
 	@pytest -p no:cacheprovider
