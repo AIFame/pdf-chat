@@ -9,7 +9,7 @@ def sidebar():
     with st.sidebar:
         st.subheader('Your PDF documents')
         pdf_docs = st.file_uploader(
-            "Upload your pdfs here and click on 'Proces'", accept_multiple_files=True,
+            "Upload your pdfs here and click on 'Proces'", accept_multiple_files=True, type=['pdf'],
         )
         # if the button is pressed
         if st.button('Process'):
