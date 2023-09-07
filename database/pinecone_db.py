@@ -27,7 +27,9 @@ def create_index(index_name: str = INDEX_NAME, dimension: int = 1536, metric: st
 
 
 def insert(data: List[Document], embeddings: OpenAIEmbeddings, index=INDEX_NAME) -> Pinecone:
-    return Pinecone.from_documents(data, embedding=embeddings, index_name=index)
+    x = pinecone.Index(index)
+    x.upsert(embeddings)  # FIXME:
+    # return x(data, embedding=embeddings, index_name=index)
 
 
 def need_text_embedding():
