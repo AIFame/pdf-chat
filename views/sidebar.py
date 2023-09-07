@@ -1,7 +1,7 @@
 import streamlit as st
 from icecream import ic
 
-from utils.ai.open_ai import get_text_chunk, get_vectorstore_openAI
+from utils.ai.open_ai import get_text_chunk, upsert
 from utils.inputs import pdf
 
 
@@ -23,4 +23,6 @@ def sidebar():
                 ic(f'text_chunks are generated and the total chucks are {len(doc)}')
 
                 # create vector store
-                vectorstore = get_vectorstore_openAI(doc)
+                # vectorstore = get_vectorstore_openAI(doc)
+
+                upsert(doc)
