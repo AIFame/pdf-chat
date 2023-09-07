@@ -4,21 +4,28 @@ setup:
 	python -m venv venv
 	source venv/bin/activate
 
-
 	pre-commit autoupdate
 
-
-
 install:
+	@ pip install --upgrade pip
 	@ pip install -r requirements.txt
-	@ pip install streamlit
 
 run:
 	@python -m streamlit run app.py
 
+install-tests:
+	@ python -m pip install -r requirements-test.txt
+
+test:
+	@pytest -p no:cacheprovider
+	@echo "testing complete"
+
 clean:
 	@echo "cleaning"
-	@rm -rf __pycache__
+	@find . -type d -name '.pytest_cache' -exec rm -rf {} +
+	@find . -type d -name 'testcache' -exec rm -rf {} +
+	@find . -type d -name '.benchmarks' -exec rm -rf {} +
+	@find . -type f -name '<_io.BytesIO object at*' -exec rm -f {} +
+	@find . -type f -name '*.log' -exec rm -f {} +
 
-
-.PHONY: run install clean
+.PHONY: run install clean setup test

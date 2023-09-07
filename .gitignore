@@ -18,6 +18,7 @@ __pycache__/
 
 # Ignore environment-specific settings
 .env
+.env.*
 
 # Ignore editor files and directories
 .vscode/
@@ -57,3 +58,7 @@ flagged/
 # pdf
 *.pdf
 You can modify this file as per your specific requirements.
+
+# Audio Buffer obj
+<_io.BytesIO object at*
+*.mp3
