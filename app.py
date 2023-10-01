@@ -10,6 +10,11 @@ from config.log import setup_log
 from utils.ai.open_ai import create_or_get_conversation_chain
 from views.home import home
 
+st.set_page_config(
+    page_title='Chat With multiple PDFs',
+    page_icon=':books:',
+)
+
 
 def main():
     if MODE == PRODUCTION:
