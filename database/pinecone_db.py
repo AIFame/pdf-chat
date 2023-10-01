@@ -2,6 +2,7 @@ import logging
 from typing import List
 
 import pinecone
+import streamlit
 from icecream import ic
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.schema import Document
@@ -14,6 +15,7 @@ def index_list() -> List[str]:
     return pinecone.list_indexes()
 
 
+@streamlit.cache_resource
 def create_index(index_name: str = INDEX_NAME, dimension: int = 1536, metric: str = 'euclidean'):
     # check before creating
     if index_name not in index_list():
@@ -26,6 +28,7 @@ def create_index(index_name: str = INDEX_NAME, dimension: int = 1536, metric: st
         logging.warning(f'{index_name} index existed. skip creating.')
 
 
+@streamlit.cache_resource
 def insert(data: List[Document], embeddings: OpenAIEmbeddings, index=INDEX_NAME) -> Pinecone:
     return Pinecone.from_documents(data, embedding=embeddings, index_name=index)
 
